@@ -15,32 +15,23 @@
 		void AddListTo(ShoppingList shoppingList, Shopper onShopper);
 	}
 
-	// TODO: remove these interfaces if i become 100% sure i don't need them
-	public interface IUsername
-	{
-		string Username { get; }
-	}
-
-	public interface IEmail
-	{
-		string Email { get; }
-	}
-
-	public interface IPassword
-	{
-		string Password { get; }
-	}
-
 	public interface IRegistrationInformation : IUsername, IEmail, IPassword
 	{
+		string Username { get; }
+		string Email { get; }
+		string Password { get; }
 		bool SendEmails { get; }
 	}
 
 	public interface IEmailLoginInformation : IEmail, IPassword
 	{
+		string Email { get; }
+		string Password { get; }
 	}
 
 	public interface IUsernameLoginInformation : IUsername, IPassword
 	{
+		string Username { get; }
+		string Password { get; }
 	}
 }
