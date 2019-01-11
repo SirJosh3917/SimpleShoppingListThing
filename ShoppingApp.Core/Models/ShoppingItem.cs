@@ -1,8 +1,5 @@
-﻿using System.Collections;
-
-namespace ShoppingApp.Core
+﻿namespace ShoppingApp.Core
 {
-
 	public class ShoppingItem : DataItem
 	{
 		public int Quantity { get; set; } = 1;

@@ -7,7 +7,7 @@ namespace ShoppingApp.Core
 	{
 		public string Username { get; set; }
 
-		public long Balance { get; set; }
+		public long Balance { get; set; } = 0L;
 
 		public string Email { get; set; }
 
@@ -15,7 +15,7 @@ namespace ShoppingApp.Core
 
 		public byte[] PasswordHash { get; set; }
 
-		public DateTime RegisterDate { get; set; }
+		public DateTime RegisterDate { get; set; } = DateTime.Now;
 
 		public virtual ICollection<ShoppingList> ShoppingLists { get; set; }
 	}

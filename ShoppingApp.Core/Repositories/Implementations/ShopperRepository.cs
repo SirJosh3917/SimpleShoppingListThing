@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using ShoppingApp.Core.Repositories.Interfaces;
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
@@ -34,11 +35,9 @@ namespace ShoppingApp.Core.Repositories.Implementations
 		{
 			var shopper = new Shopper
 			{
-				Balance = 0,
 				Username = registrationInformation.Username,
 				Email = registrationInformation.Email,
 				PasswordHash = registrationInformation.Password.Hash(registrationInformation.Username),
-				RegisterDate = DateTime.UtcNow,
 				SendEmails = registrationInformation.SendEmails,
 			};
 
@@ -69,15 +68,16 @@ namespace ShoppingApp.Core.Repositories.Implementations
 			);
 		}
 
+		// TODO: figure out password matching bug
 		private bool PasswordMatches(Shopper shopper, string saltedPassword)
-			=> shopper.PasswordHash == saltedPassword.GetBytes();
+			=> shopper.PasswordHash.Equals(saltedPassword.GetBytes());
 
 		// TODO: refactor to not have redundancies
 		public Shopper FindByUsername(string username) => FindFirstOrDefault(x => x.Username == username);
 
 		public Shopper FindByEmail(string email) => FindFirstOrDefault(x => x.Email == email);
 
-		private Shopper FindFirstOrDefault(Expression<Func<Shopper, bool>> predicate)
+		private static Shopper FindFirstOrDefault(Expression<Func<Shopper, bool>> predicate)
 		{
 			using (var ctx = new ShoppingContext())
 			{
@@ -105,6 +105,7 @@ namespace ShoppingApp.Core.Repositories.Implementations
 			.FirstOrDefault(predicate);
 	}
 
+	// TODO: seems like a lot of redundancy, could probably be compacted?
 	public class RegistrationInformation : IRegistrationInformation, IEmailLoginInformation, IUsernameLoginInformation
 	{
 		public RegistrationInformation(bool sendEmails, string username, string email, string password)

@@ -1,15 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShoppingApp.Core;
+﻿using ShoppingApp.Core;
 using ShoppingApp.Core.Repositories.Implementations;
 using ShoppingApp.Core.Repositories.Interfaces;
+
 using System;
-using System.Linq;
 
 namespace ShoppingApp.Demo
 {
-	class Program
+	internal class Program
 	{
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			IShopperRepository repo = new ShopperRepository();
 
@@ -36,7 +35,7 @@ namespace ShoppingApp.Demo
 					Name = "i should use decimals instead of longs",
 					Price = 1L
 				});
-			
+
 			Console.WriteLine(repo.PasswordMatches(millene as IEmailLoginInformation));
 			Console.WriteLine(repo.PasswordMatches(johan as IUsernameLoginInformation));
 
@@ -46,9 +45,9 @@ namespace ShoppingApp.Demo
 
 			Console.WriteLine(shopper.RegisterDate);
 
-			foreach(var lists in repo.FindByUsername(johan.Username).ShoppingLists)
+			foreach (var lists in repo.FindByUsername(johan.Username).ShoppingLists)
 			{
-				foreach(var item in lists.Items)
+				foreach (var item in lists.Items)
 				{
 					Console.WriteLine($"{item.Name} - {item.Price}");
 				}

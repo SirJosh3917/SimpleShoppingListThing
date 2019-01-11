@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ShoppingApp.Core.Repositories.Interfaces
+﻿namespace ShoppingApp.Core.Repositories.Interfaces
 {
 	public interface IShopperRepository
 	{

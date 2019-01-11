@@ -1,7 +1,7 @@
 ﻿using ShoppingApp.Core.Repositories.Interfaces;
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ShoppingApp.Core.Repositories.Implementations
 {
