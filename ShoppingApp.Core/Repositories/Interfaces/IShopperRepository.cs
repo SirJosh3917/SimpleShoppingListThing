@@ -15,7 +15,7 @@
 		void AddListTo(ShoppingList shoppingList, Shopper onShopper);
 	}
 
-	public interface IRegistrationInformation : IUsername, IEmail, IPassword
+	public interface IRegistrationInformation
 	{
 		string Username { get; }
 		string Email { get; }
@@ -23,13 +23,13 @@
 		bool SendEmails { get; }
 	}
 
-	public interface IEmailLoginInformation : IEmail, IPassword
+	public interface IEmailLoginInformation
 	{
 		string Email { get; }
 		string Password { get; }
 	}
 
-	public interface IUsernameLoginInformation : IUsername, IPassword
+	public interface IUsernameLoginInformation
 	{
 		string Username { get; }
 		string Password { get; }

@@ -18,30 +18,35 @@ namespace ShoppingApp.Demo
 			repo.Register(johan);
 			repo.Register(millene);
 
-			IShoppingListRepository list = new ShoppingListRepository("Untitled-1");
-			list
-				.Add(new ShoppingItem
+			var list = new ShoppingList
+			{
+				Name = "Untitled-1",
+				Items = new ShoppingItem[]
 				{
-					Name = "chair",
-					Price = 399L
-				})
-				.Add(new ShoppingItem
-				{
-					Name = "paper",
-					Price = 9L
-				})
-				.Add(new ShoppingItem
-				{
-					Name = "i should use decimals instead of longs",
-					Price = 1L
-				});
+					new ShoppingItem
+					{
+						Name = "chair",
+						Price = 399L
+					},
+					new ShoppingItem
+					{
+						Name = "paper",
+						Price = 9L
+					},
+					new ShoppingItem
+					{
+						Name = "i should use decimals instead of longs",
+						Price = 1L
+					}
+				}
+			};
 
 			Console.WriteLine(repo.PasswordMatches(millene as IEmailLoginInformation));
 			Console.WriteLine(repo.PasswordMatches(johan as IUsernameLoginInformation));
 
 			var shopper = repo.FindByEmail("johankunt@gmail.com");
 
-			repo.AddListTo(list.ToList(), shopper);
+			repo.AddListTo(list, shopper);
 
 			Console.WriteLine(shopper.RegisterDate);
 
