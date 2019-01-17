@@ -1,6 +1,4 @@
 ﻿using ShoppingApp.Core;
-using ShoppingApp.Core.Repositories.Implementations;
-using ShoppingApp.Core.Repositories.Interfaces;
 
 using System;
 
@@ -9,7 +7,7 @@ namespace ShoppingApp.Demo
 	internal class Program
 	{
 		private static void Main(string[] args)
-		{
+		{/*
 			IShopperRepository repo = new ShopperRepository();
 
 			var johan = new RegistrationInformation(false, "Johan Kunt", "johankunt@gmail.com", "password1");
@@ -57,7 +55,7 @@ namespace ShoppingApp.Demo
 					Console.WriteLine($"{item.Name} - {item.Price}");
 				}
 			}
-
+			*/
 			Console.WriteLine("Done");
 			Console.ReadLine();
 		}
