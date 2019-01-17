@@ -132,10 +132,6 @@
       <Project>{4b7011a4-71f0-47cf-871f-8a298ec1c5c0}</Project>
       <Name>ShoppingApp.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShoppingApp.Logic\ShoppingApp.Logic.csproj">
-      <Project>{a36e65eb-2208-429f-ac95-c000ae355a8a}</Project>
-      <Name>ShoppingApp.Logic</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

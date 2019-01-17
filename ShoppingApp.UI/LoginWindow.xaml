@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Login" Height="150" Width="350">
     <Grid>
-        <TextBox Margin="141,19,27,0" TextWrapping="Wrap" Text="{Binding UsernameOrEmail}" Height="23" VerticalAlignment="Top"/>
-        <TextBox Margin="141,47,27,0" TextWrapping="Wrap" Text="{Binding Password}" Height="23" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="27,23,0,0" TextWrapping="Wrap" Text="Username/Email" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="27,51,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
+        <TextBox Margin="141,19,27,0" TextWrapping="Wrap" Text="{Binding UsernameOrEmail}" Height="23" VerticalAlignment="Top" />
+        <TextBox Margin="141,47,27,0" TextWrapping="Wrap" Text="{Binding Password}" Height="23" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="27,23,0,0" TextWrapping="Wrap" Text="Username/Email" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="27,51,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" />
         <Button Content="Button" Margin="27,75,27,0" VerticalAlignment="Top" Click="Button_Click" />
     </Grid>
 </Window>

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ShoppingApp.UI
@@ -90,6 +86,7 @@ namespace ShoppingApp.UI
 		public static WindowContext State { get; } = new WindowContext(App.Current.MainWindow);
 
 		private bool _updateWindow = true;
+
 		public bool UpdateWindow
 		{
 			get => _updateWindow;

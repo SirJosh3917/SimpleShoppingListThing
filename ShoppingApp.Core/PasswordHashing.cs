@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace ShoppingApp.Core
@@ -29,7 +27,7 @@ namespace ShoppingApp.Core
 				return false;
 			}
 
-			for(var index = 0; index < byteArray.Length; index++)
+			for (var index = 0; index < byteArray.Length; index++)
 			{
 				if (byteArray[index] != otherByteArray[index])
 				{

@@ -5,11 +5,7 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingApp.Core", "ShoppingApp.Core\ShoppingApp.Core.csproj", "{4B7011A4-71F0-47CF-871F-8A298EC1C5C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingApp.Demo", "ShoppingApp.Demo\ShoppingApp.Demo.csproj", "{B218AC43-1628-4CF2-9B8F-0C0EC92B8816}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingApp.UI", "ShoppingApp.UI\ShoppingApp.UI.csproj", "{AAA3F117-5B7C-40A8-A062-46F3551B4D44}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingApp.Logic", "ShoppingApp.Logic\ShoppingApp.Logic.csproj", "{A36E65EB-2208-429F-AC95-C000AE355A8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +17,10 @@ Global
 		{4B7011A4-71F0-47CF-871F-8A298EC1C5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B7011A4-71F0-47CF-871F-8A298EC1C5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B7011A4-71F0-47CF-871F-8A298EC1C5C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B218AC43-1628-4CF2-9B8F-0C0EC92B8816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B218AC43-1628-4CF2-9B8F-0C0EC92B8816}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B218AC43-1628-4CF2-9B8F-0C0EC92B8816}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B218AC43-1628-4CF2-9B8F-0C0EC92B8816}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AAA3F117-5B7C-40A8-A062-46F3551B4D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AAA3F117-5B7C-40A8-A062-46F3551B4D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA3F117-5B7C-40A8-A062-46F3551B4D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA3F117-5B7C-40A8-A062-46F3551B4D44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A36E65EB-2208-429F-AC95-C000AE355A8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A36E65EB-2208-429F-AC95-C000AE355A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A36E65EB-2208-429F-AC95-C000AE355A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A36E65EB-2208-429F-AC95-C000AE355A8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

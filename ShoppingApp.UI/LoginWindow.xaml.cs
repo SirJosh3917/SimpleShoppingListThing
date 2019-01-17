@@ -1,18 +1,5 @@
-﻿using ShoppingApp.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ShoppingApp.Core.Middlemen;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ShoppingApp.UI
 {
@@ -21,18 +8,24 @@ namespace ShoppingApp.UI
 	/// </summary>
 	public partial class LoginWindow : Window
 	{
-		private readonly SampleBindingSource _data;
+		private class LoginWindowBindingSource
+		{
+			public string UsernameOrEmail { get; set; }
+			public string Password { get; set; }
+		}
+
+		private readonly LoginWindowBindingSource _data;
 
 		public LoginWindow()
 		{
-			_data = new SampleBindingSource();
+			_data = new LoginWindowBindingSource();
 			DataContext = _data;
 			InitializeComponent();
 		}
 
 		public IUserValidator UserValidator { get; } = New.UserValidator();
 
-		private async void Button_Click(object sender, RoutedEventArgs e)
+		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			if (UserValidator.IsValid(_data.UsernameOrEmail, _data.Password))
 			{
@@ -40,21 +33,20 @@ namespace ShoppingApp.UI
 			}
 			else
 			{
-				MessageBox.Show
-				(
-					"Invalid Credentials",
-					"The credentials you specified are invalid.",
-					MessageBoxButton.OK,
-					MessageBoxImage.Warning,
-					MessageBoxResult.OK
-				);
+				ShowInvalidCredentialsMessage();
 			}
 		}
-	}
 
-	public class SampleBindingSource
-	{
-		public string UsernameOrEmail { get; set; }
-		public string Password { get; set; }
+		private static void ShowInvalidCredentialsMessage()
+		{
+			MessageBox.Show
+			(
+				"Invalid Credentials",
+				"The credentials you specified are invalid.",
+				MessageBoxButton.OK,
+				MessageBoxImage.Warning,
+				MessageBoxResult.OK
+			);
+		}
 	}
 }

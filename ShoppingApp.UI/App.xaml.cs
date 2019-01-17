@@ -1,10 +1,8 @@
 ﻿using ShoppingApp.Core;
+
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ShoppingApp.UI
@@ -17,9 +15,10 @@ namespace ShoppingApp.UI
 		public App()
 		{
 			// seed db
+#if DEBUG
 			using (var shopCtx = new ShoppingContext())
 			{
-				foreach(var shp in shopCtx.Shoppers)
+				foreach (var shp in shopCtx.Shoppers)
 				{
 					string a = $"{shp.Email}, {shp.Username}, {shp.PasswordHash}";
 					bool b = shp.Username == "sj";
@@ -68,6 +67,7 @@ namespace ShoppingApp.UI
 					shopCtx.SaveChanges();
 				}
 			}
+#endif
 		}
 	}
 }

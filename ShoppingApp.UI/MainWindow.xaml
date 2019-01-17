@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Login" HorizontalAlignment="Left" Margin="48,27,0,0" VerticalAlignment="Top" Width="75" Click="LoginWindow"/>
-        <Button Content="Register" HorizontalAlignment="Left" Margin="60,119,0,0" VerticalAlignment="Top" Width="75" Click="RegisterWindow"/>
-
+        <Button Content="Login" HorizontalAlignment="Left" Margin="48,27,0,0" VerticalAlignment="Top" Width="75" Click="LoginWindow" />
+        <Button Content="Register" HorizontalAlignment="Left" Margin="60,119,0,0" VerticalAlignment="Top" Width="75" Click="RegisterWindow" />
     </Grid>
 </Window>
