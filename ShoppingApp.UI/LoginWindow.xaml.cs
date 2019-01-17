@@ -1,4 +1,6 @@
 ﻿using ShoppingApp.Core.Middlemen;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 
 namespace ShoppingApp.UI
@@ -8,18 +10,28 @@ namespace ShoppingApp.UI
 	/// </summary>
 	public partial class LoginWindow : Window
 	{
-		private class LoginWindowBindingSource
+		private class LoginWindowBindingSource : BindingSource
 		{
-			public string UsernameOrEmail { get; set; }
-			public string Password { get; set; }
+			private string _usernameOrEmail;
+			public string UsernameOrEmail
+			{
+				get => _usernameOrEmail;
+				set => SetField(ref _usernameOrEmail, value);
+			}
+
+			private string _password;
+			public string Password
+			{
+				get => _password;
+				set => SetField(ref _password, value);
+			}
 		}
 
 		private readonly LoginWindowBindingSource _data;
 
 		public LoginWindow()
 		{
-			_data = new LoginWindowBindingSource();
-			DataContext = _data;
+			DataContext = _data = new LoginWindowBindingSource();
 			InitializeComponent();
 		}
 
@@ -27,9 +39,14 @@ namespace ShoppingApp.UI
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			if (UserValidator.IsValid(_data.UsernameOrEmail, _data.Password))
+			var usernameOrEmail = _data.UsernameOrEmail;
+			var password = _data.Password;
+
+			if (UserValidator.IsValid(usernameOrEmail, password))
 			{
-				WindowContext.State.ChangeWindow(new ShopperWindow());
+				var shopper = UserValidator.FetchUser(usernameOrEmail, password);
+
+				WindowContext.State.ChangeWindow(new ShopperWindow(shopper));
 			}
 			else
 			{

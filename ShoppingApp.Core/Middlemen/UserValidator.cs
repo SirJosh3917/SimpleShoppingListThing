@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace ShoppingApp.Core.Middlemen
 {
@@ -25,6 +26,8 @@ namespace ShoppingApp.Core.Middlemen
 		private IQueryable<Shopper> MakeQuery(ShoppingContext shopCtx, string username, string password)
 			=> shopCtx.Shoppers
 					.Where(x => x.Username == username || x.Email == username)
-					.Where(x => x.PasswordHash.Equivalent(password.Hash(x.Username)));
+					.Where(x => x.PasswordHash.Equivalent(password.Hash(x.Username)))
+					.Include(x => x.ShoppingLists)
+						.ThenInclude(x => x.Items);
 	}
 }

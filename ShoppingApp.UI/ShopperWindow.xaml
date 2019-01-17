@@ -7,5 +7,9 @@
         mc:Ignorable="d"
         Title="Shopper" Height="450" Width="800">
     <Grid>
+        <DataGrid HorizontalAlignment="Left" Height="225" Margin="58,31,0,0" VerticalAlignment="Top" Width="250" ItemsSource="{Binding ShoppingLists}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+            </DataGrid.Columns>
     </Grid>
 </Window>
