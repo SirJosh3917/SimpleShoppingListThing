@@ -80,6 +80,9 @@
     <Compile Include="ShopperWindow.xaml.cs">
       <DependentUpon>ShopperWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShoppingListWindow.xaml.cs">
+      <DependentUpon>ShoppingListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPFHelpers.cs" />
     <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShopperWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShoppingListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

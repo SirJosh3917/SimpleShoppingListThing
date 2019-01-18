@@ -7,9 +7,25 @@
         mc:Ignorable="d"
         Title="Shopper" Height="450" Width="800">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="225" Margin="58,31,0,0" VerticalAlignment="Top" Width="250" ItemsSource="{Binding ShoppingLists}" AutoGenerateColumns="False">
+        <DataGrid HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="202"
+                  ItemsSource="{Binding ShoppingLists}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn
+                    Header="Name"
+                    Binding="{Binding Name}" />
             </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="395" Margin="217,14,0,0" VerticalAlignment="Top" Width="565">
+            <Grid HorizontalAlignment="Left" Height="358" Margin="10,10,-2,0" VerticalAlignment="Top" Width="545">
+                <Button Content="Edit List" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"
+                        IsEnabled="{Binding AnythingSelected}"
+                        Click="EditList" />
+                <Button Content="New List" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="75"
+                        Click="NewList" />
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

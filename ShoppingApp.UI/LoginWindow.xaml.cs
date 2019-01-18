@@ -1,6 +1,5 @@
 ﻿using ShoppingApp.Core.Middlemen;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.Windows;
 
 namespace ShoppingApp.UI
@@ -13,6 +12,7 @@ namespace ShoppingApp.UI
 		private class LoginWindowBindingSource : BindingSource
 		{
 			private string _usernameOrEmail;
+
 			public string UsernameOrEmail
 			{
 				get => _usernameOrEmail;
@@ -20,6 +20,7 @@ namespace ShoppingApp.UI
 			}
 
 			private string _password;
+
 			public string Password
 			{
 				get => _password;

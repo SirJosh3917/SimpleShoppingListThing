@@ -1,11 +1,8 @@
 ﻿using ShoppingApp.Core;
-using System.Collections;
+
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Data;
 
 namespace ShoppingApp.UI
 {
@@ -21,14 +18,36 @@ namespace ShoppingApp.UI
 			public ShopperWindowBindingSource(Shopper shopper)
 			{
 				_shopper = shopper;
-				ShoppingLists = new ObservableCollection<ShoppingList>(_shopper.ShoppingLists.ToList());
+				ShoppingLists = _shopper.ShoppingLists.ToList();
 			}
 
-			private ObservableCollection<ShoppingList> _shoppingLists;
-			public ObservableCollection<ShoppingList> ShoppingLists
+			private ICollection<ShoppingList> _shoppingLists;
+
+			public ICollection<ShoppingList> ShoppingLists
 			{
 				get => _shoppingLists;
 				set => SetField(ref _shoppingLists, value);
+			}
+
+			private bool _anythingSelected;
+
+			public bool AnythingSelected
+			{
+				get => _anythingSelected;
+				set => SetField(ref _anythingSelected, value);
+			}
+
+			private ShoppingList _selectedItem;
+
+			public ShoppingList SelectedItem
+			{
+				get => _selectedItem;
+				set
+				{
+					_selectedItem = value;
+
+					AnythingSelected = _selectedItem != null;
+				}
 			}
 		}
 
@@ -41,5 +60,11 @@ namespace ShoppingApp.UI
 			DataContext = _data = new ShopperWindowBindingSource(shopper);
 			InitializeComponent();
 		}
+
+		private void NewList(object sender, RoutedEventArgs e)
+			=> WindowContext.State.OpenChildWindow(new ShoppingListWindow());
+
+		private void EditList(object sender, RoutedEventArgs e)
+			=> WindowContext.State.OpenChildWindow(new ShoppingListWindow(_data.SelectedItem));
 	}
 }
