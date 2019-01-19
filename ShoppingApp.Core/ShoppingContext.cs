@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Query;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ShoppingApp.Core
 {
@@ -39,8 +42,12 @@ namespace ShoppingApp.Core
 			where T : DataItem
 		{
 			dataItem.HasKey(e => e.Id);
-			dataItem.Property(e => e.Id)
-				.ValueGeneratedOnAdd();
+			dataItem.Property(e => e.Id);
+				// .ValueGeneratedOnAdd();
 		}
+
+		public static IIncludableQueryable<Shopper, ICollection<ShoppingItem>> IncludeShopperItems(this IQueryable<Shopper> shopperQuery)
+			=> shopperQuery.Include(x => x.ShoppingLists)
+					.ThenInclude(x => x.Items);
 	}
 }

@@ -5,10 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoppingApp.UI"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800">
+        Title="{Binding WindowTitle}" Height="450" Width="800">
     <Grid>
         <Button Content="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" />
-        <DataGrid HorizontalAlignment="Left" Height="376" Margin="10,33,0,0" VerticalAlignment="Top" Width="772">
+        <DataGrid HorizontalAlignment="Left" Height="348" Margin="10,61,0,0" VerticalAlignment="Top" Width="772"
+                  ItemsSource="{Binding ShoppingItems}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Name"
+                    Binding="{Binding Name}" />
+                <DataGridTextColumn
+                    Header="Price"
+                    Binding="{Binding Price}" />
+                <DataGridTextColumn
+                    Header="Amount To Buy"
+                    Binding="{Binding Quantity}" />
+                <DataGridTextColumn
+                    Header="Amount Bought"
+                    Binding="{Binding AmountBought}" />
+            </DataGrid.Columns>
         </DataGrid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top" Width="772" />
     </Grid>
 </Window>

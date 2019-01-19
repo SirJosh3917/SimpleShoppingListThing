@@ -1,7 +1,8 @@
 ﻿using ShoppingApp.Core;
-
+using ShoppingApp.Core.Middlemen;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace ShoppingApp.UI
@@ -61,10 +62,31 @@ namespace ShoppingApp.UI
 			InitializeComponent();
 		}
 
-		private void NewList(object sender, RoutedEventArgs e)
-			=> WindowContext.State.OpenChildWindow(new ShoppingListWindow());
+		public IShoppingListSaver ShoppingListSaver { get; } = New.ShoppingListSaver();
 
-		private void EditList(object sender, RoutedEventArgs e)
-			=> WindowContext.State.OpenChildWindow(new ShoppingListWindow(_data.SelectedItem));
+		private async void NewList(object sender, RoutedEventArgs e)
+			=> await OpenShoppingWindow(new ShoppingListWindow(), true).ConfigureAwait(false);
+
+		private async void EditList(object sender, RoutedEventArgs e)
+			=> await OpenShoppingWindow(new ShoppingListWindow(_data.SelectedItem), false).ConfigureAwait(false);
+
+		private async Task OpenShoppingWindow(ShoppingListWindow shoppingListWindow, bool newList)
+		{
+			await WindowContext.State.WaitUntilChildWindowCloses(shoppingListWindow);
+			var shoppingList = shoppingListWindow.GetShoppingList();
+
+#if DEBUG
+			if (true)
+#else
+			if (newList)
+#endif
+			{
+				ShoppingListSaver.AddList(_shopper, shoppingList);
+			}
+			else
+			{
+				ShoppingListSaver.EditList(_shopper, shoppingList);
+			}
+		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace ShoppingApp.UI
@@ -124,7 +125,7 @@ namespace ShoppingApp.UI
 			}
 		}
 
-		public void Push(Window window)
+		public void Push(Window window, Action onDeath = null)
 		{
 			var dequeue = _poppingQueue.Push(window);
 
@@ -132,6 +133,8 @@ namespace ShoppingApp.UI
 			{
 				dequeue();
 				UpdateWindowState();
+
+				onDeath?.Invoke();
 			};
 
 			UpdateWindowState();
@@ -152,7 +155,22 @@ namespace ShoppingApp.UI
 	public static class WPFHelpers
 	{
 		public static void OpenChildWindow(this WindowContext wCtx, Window newWindow) => wCtx.Push(newWindow);
-
 		public static void ChangeWindow(this WindowContext wCtx, Window newWindow) => wCtx.SwapTop(newWindow);
+
+		public static Task WaitUntilChildWindowCloses(this WindowContext wCtx, Window newWindow)
+		{
+			var tcs = new TaskCompletionSource<bool>();
+
+			wCtx.Push
+			(
+				newWindow,
+				() =>
+				{
+					tcs.SetResult(true);
+				}
+			);
+
+			return tcs.Task;
+		}
 	}
 }
