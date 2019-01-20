@@ -2,7 +2,6 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 
 namespace ShoppingApp.UI
@@ -38,6 +37,8 @@ namespace ShoppingApp.UI
 				{
 					_input.Name = value;
 					InvokePropertyChanged();
+
+					// TODO: figure out if this line is needed
 					InvokePropertyChanged(nameof(WindowTitle));
 				}
 			}
@@ -53,18 +54,22 @@ namespace ShoppingApp.UI
 
 		private readonly ShoppingList _shoppingList;
 		private readonly ShoppingListWindowBindingSource _data;
+		private ShoppingList _savedList;
 
 		public ShoppingListWindow() : this(null)
 		{
 		}
 
-		public ShoppingList GetShoppingList()
+		public ShoppingList GetShoppingList() => _savedList ?? _shoppingList;
+
+		public ShoppingList GenerateShoppingList()
 		{
 			var shoppingList = _data.GetShoppingList();
 
 			var shoppingItems = _data.ShoppingItems;
 
 			// set the items in the list to the items set by the user
+			// TODO: figure out if this line is needed
 			shoppingList.Items = shoppingItems;
 
 			return shoppingList;
@@ -77,5 +82,7 @@ namespace ShoppingApp.UI
 			DataContext = _data = new ShoppingListWindowBindingSource(_shoppingList);
 			InitializeComponent();
 		}
+
+		private void SaveClick(object sender, RoutedEventArgs e) => _savedList = GenerateShoppingList();
 	}
 }

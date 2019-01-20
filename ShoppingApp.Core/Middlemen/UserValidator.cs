@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
+﻿using System.Linq;
 
 namespace ShoppingApp.Core.Middlemen
 {
@@ -9,7 +8,7 @@ namespace ShoppingApp.Core.Middlemen
 		{
 			using (var shopCtx = new ShoppingContext())
 			{
-				return MakeQuery(shopCtx, username, password)
+				return shopCtx.MakeQuery(username, password)
 						.Any();
 			}
 		}
@@ -18,15 +17,9 @@ namespace ShoppingApp.Core.Middlemen
 		{
 			using (var shopCtx = new ShoppingContext())
 			{
-				return MakeQuery(shopCtx, username, password)
+				return shopCtx.MakeQuery(username, password)
 					.First();
 			}
 		}
-
-		private static IQueryable<Shopper> MakeQuery(ShoppingContext shopCtx, string username, string password)
-			=> shopCtx.Shoppers
-					.Where(x => x.Username == username || x.Email == username)
-					.Where(x => x.PasswordHash.Equivalent(password.Hash(x.Username)))
-					.IncludeShopperItems();
 	}
 }

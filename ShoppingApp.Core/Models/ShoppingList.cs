@@ -9,6 +9,6 @@ namespace ShoppingApp.Core
 
 		public DateTime CreationDate { get; set; } = DateTime.UtcNow;
 
-		public ICollection<ShoppingItem> Items { get; set; }
+		public virtual ICollection<ShoppingItem> Items { get; set; }
 	}
 }

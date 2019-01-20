@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Query;
+
 using System.Collections.Generic;
 using System.Linq;
 
@@ -43,7 +44,7 @@ namespace ShoppingApp.Core
 		{
 			dataItem.HasKey(e => e.Id);
 			dataItem.Property(e => e.Id);
-				// .ValueGeneratedOnAdd();
+			// .ValueGeneratedOnAdd();
 		}
 
 		public static IIncludableQueryable<Shopper, ICollection<ShoppingItem>> IncludeShopperItems(this IQueryable<Shopper> shopperQuery)

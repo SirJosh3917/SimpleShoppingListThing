@@ -1,5 +1,6 @@
 ﻿using ShoppingApp.Core;
 using ShoppingApp.Core.Middlemen;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -63,6 +64,7 @@ namespace ShoppingApp.UI
 		}
 
 		public IShoppingListSaver ShoppingListSaver { get; } = New.ShoppingListSaver();
+		public IShopperFinder ShopperFinder { get; } = New.ShopperFinder();
 
 		private async void NewList(object sender, RoutedEventArgs e)
 			=> await OpenShoppingWindow(new ShoppingListWindow(), true).ConfigureAwait(false);
@@ -75,11 +77,7 @@ namespace ShoppingApp.UI
 			await WindowContext.State.WaitUntilChildWindowCloses(shoppingListWindow);
 			var shoppingList = shoppingListWindow.GetShoppingList();
 
-#if DEBUG
-			if (true)
-#else
 			if (newList)
-#endif
 			{
 				ShoppingListSaver.AddList(_shopper, shoppingList);
 			}
@@ -87,6 +85,8 @@ namespace ShoppingApp.UI
 			{
 				ShoppingListSaver.EditList(_shopper, shoppingList);
 			}
+
+			_data.ShoppingLists = ShopperFinder.GetBy(_shopper.Id).ShoppingLists;
 		}
 	}
 }

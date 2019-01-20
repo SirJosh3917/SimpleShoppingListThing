@@ -155,6 +155,7 @@ namespace ShoppingApp.UI
 	public static class WPFHelpers
 	{
 		public static void OpenChildWindow(this WindowContext wCtx, Window newWindow) => wCtx.Push(newWindow);
+
 		public static void ChangeWindow(this WindowContext wCtx, Window newWindow) => wCtx.SwapTop(newWindow);
 
 		public static Task WaitUntilChildWindowCloses(this WindowContext wCtx, Window newWindow)

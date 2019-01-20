@@ -1,0 +1,19 @@
+﻿<Window x:Class="ShoppingApp.UI.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoppingApp.UI"
+        mc:Ignorable="d"
+        Title="RegisterWindow"  Height="187" Width="350">
+    <Grid>
+        <TextBox Margin="141,19,27,0" TextWrapping="Wrap" Text="{Binding Username}" Height="23" VerticalAlignment="Top" />
+        <TextBox Margin="141,47,27,0" TextWrapping="Wrap" Text="{Binding Email}" Height="23" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="27,23,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="27,51,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" />
+        <Button Content="Register" Margin="27,123,27,0" VerticalAlignment="Top" Click="Button_Click" />
+        <TextBox Margin="141,75,27,0" TextWrapping="Wrap" Text="{Binding Password}" Height="23" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="27,84,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" />
+        <CheckBox Content="Spam my inbox" HorizontalAlignment="Left" Margin="114,103,0,0" VerticalAlignment="Top" IsChecked="{Binding SendEmails}" />
+    </Grid>
+</Window>

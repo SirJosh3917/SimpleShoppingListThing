@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ShoppingApp.Core.Middlemen
+﻿namespace ShoppingApp.Core.Middlemen
 {
 	public interface IShoppingListSaver
 	{

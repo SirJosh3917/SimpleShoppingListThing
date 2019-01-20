@@ -9,10 +9,10 @@ namespace ShoppingApp.UI
 	{
 		public MainWindow() => InitializeComponent();
 
-		private void LoginWindow(object sender, RoutedEventArgs e) => WindowContext.State.OpenChildWindow(new LoginWindow());
+		private void LoginWindow(object sender, RoutedEventArgs e)
+			=> WindowContext.State.OpenChildWindow(new LoginWindow());
 
 		private void RegisterWindow(object sender, RoutedEventArgs e)
-		{
-		}
+			=> WindowContext.State.OpenChildWindow(new RegisterWindow());
 	}
 }
