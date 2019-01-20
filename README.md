@@ -11,3 +11,15 @@ some notable things:
   - dear god frontend is HELL
   - :pray: for you frontend devs
   - i'm gonna go back to backend development and never touch the frontend again
+  
+  # Preview
+  
+  ![main](./main.png)
+  
+  ![login](./login.png)
+  
+  ![register](./register.png)
+  
+  ![mainWindow](./shopperWindow.png)
+  
+  ![shoppingList](./editList.png)
