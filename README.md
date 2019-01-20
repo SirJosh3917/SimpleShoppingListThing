@@ -7,6 +7,7 @@ some notable things:
   - hashing the password in multiple places, hoping that they hash it by the username instead of making this explicit
   - WPF form designer code just sucks
   - redundant code
+  - the "middlemen" folder, the New.X, the interfaces, the classes, etc, are all needless layers of abstraction that could be done away with
   - i suck at design
   - dear god frontend is HELL
   - :pray: for you frontend devs
